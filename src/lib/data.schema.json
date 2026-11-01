@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lawn data",
+  "type": "object",
+  "required": ["grass"],
+  "properties": {
+    "grass": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "link", "size"],
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

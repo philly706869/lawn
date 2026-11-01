@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "@fontsource-variable/noto-sans";
+
+@theme {
+  --font-sans: "Segoe UI", "Noto Sans", sans-serif;
+
+  --color-grass-4: #56d364;
+  --color-grass-3: #2ea043;
+  --color-grass-2: #196c2e;
+  --color-grass-1: #033a16;
+  --color-grass-0: #151b23;
+  --color-primary: #238636;
+  --color-text-primary: #ffffff;
+  --color-text: #f0f6fc;
+  --color-border: #3d444d;
+  --color-background: #0d1117;
+  --color-outline: #1f6feb;
+}

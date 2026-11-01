@@ -1,0 +1,56 @@
+<script lang="ts">
+  import Input from "#lib/components/Input.svelte";
+  import Lawn from "#lib/components/Lawn.svelte";
+  import { message } from "#lib/message.ts";
+  import { push_grass } from "#lib/mod.ts";
+
+  let api_key = $state("");
+  let password = $state("");
+  let date = $state("");
+  let link = $state("");
+  let content = $state("");
+  let saving = $state(false);
+  let status = $state("");
+
+  const on_push_grass_click = async () => {
+    if (saving) return;
+    saving = true;
+    status = "";
+    const api_key_ = api_key;
+    api_key = "";
+    const result = await push_grass({ api_key: api_key_, password, date, link, content });
+    if (result.isOk()) {
+      status = message.mod.saved(result.value.commit_sha);
+    } else {
+      status = result.error;
+    }
+    saving = false;
+  };
+</script>
+
+<div class="min-h-dvh bg-background">
+  <div class="mx-auto w-full max-w-4xl space-y-6 p-6">
+    <Lawn />
+    <div class="space-y-2">
+      <Input label={message.mod.api_key} bind:value={api_key} password />
+      <Input label={message.mod.password} bind:value={password} password />
+      <Input label={message.mod.date} bind:value={date} />
+      <Input label={message.mod.link} bind:value={link} />
+      <Input label={message.mod.content} bind:value={content} rows={20} />
+    </div>
+    <div class="font-sans text-sm text-text">
+      {status}
+    </div>
+    <div class="flex justify-end">
+      <button
+        class="flex h-8 items-center rounded-md border border-white/15 bg-primary px-3"
+        disabled={saving}
+        onclick={() => void on_push_grass_click()}
+      >
+        <div class="font-sans text-sm font-medium text-text-primary">
+          {saving ? message.mod.saving : message.mod.push_grass}
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

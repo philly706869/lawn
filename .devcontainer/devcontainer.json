@@ -1,0 +1,15 @@
+{
+  "name": "잔디밭",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:26-trixie",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "github.vscode-github-actions",
+        "ms-azuretools.vscode-containers",
+        "svelte.svelte-vscode"
+      ]
+    }
+  }
+}
