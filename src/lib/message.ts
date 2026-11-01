@@ -3,6 +3,8 @@ export const message = {
     monday: "Mon",
     wednesday: "Wed",
     friday: "Fri",
+    less: "Less",
+    more: "More",
   },
   mod: {
     api_key: "API Key",
