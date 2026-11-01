@@ -29,7 +29,7 @@
       date = "";
       link = "";
       content = "";
-      status = message.mod.saved(result.value.commit_sha);
+      status = message.mod.pushed(result.value.commit_sha);
     } else {
       status = result.error;
     }
@@ -57,7 +57,7 @@
         onclick={() => void on_push_grass_click()}
       >
         <div class="font-sans text-sm font-medium text-text-primary">
-          {saving ? message.mod.saving : message.mod.push_grass}
+          {saving ? message.mod.pushing : message.mod.push_grass}
         </div>
       </button>
     </div>
