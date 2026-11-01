@@ -20,6 +20,9 @@
     api_key = "";
     const result = await push_grass({ api_key: api_key_, password, date, link, content });
     if (result.isOk()) {
+      date = "";
+      link = "";
+      content = "";
       status = message.mod.saved(result.value.commit_sha);
     } else {
       status = result.error;
