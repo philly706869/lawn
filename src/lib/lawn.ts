@@ -1,4 +1,4 @@
-import { data } from "./data.ts";
+import { data } from "#lib/data.ts";
 
 export interface LawnWeek {
   year?: string;

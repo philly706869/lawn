@@ -4,9 +4,15 @@
   import { message } from "#lib/message.ts";
   import { push_grass } from "#lib/mod.ts";
 
+  const default_date = () => {
+    return new Date(Date.now() - 6 * 60 * 60 * 1000).toLocaleDateString("sv-SE", {
+      timeZone: "Asia/Seoul",
+    });
+  };
+
   let api_key = $state("");
   let password = $state("");
-  let date = $state("");
+  let date = $state(default_date());
   let link = $state("");
   let content = $state("");
   let saving = $state(false);
@@ -23,7 +29,7 @@
       date = "";
       link = "";
       content = "";
-      status = message.mod.saved(result.value.commit_sha);
+      status = message.mod.pushed(result.value.commit_sha);
     } else {
       status = result.error;
     }
@@ -35,11 +41,11 @@
   <div class="mx-auto w-full max-w-4xl space-y-6 p-6">
     <Lawn />
     <div class="space-y-2">
-      <Input label={message.mod.api_key} bind:value={api_key} password />
-      <Input label={message.mod.password} bind:value={password} password />
-      <Input label={message.mod.date} bind:value={date} />
-      <Input label={message.mod.link} bind:value={link} />
-      <Input label={message.mod.content} bind:value={content} rows={20} />
+      <Input label={message.mod.api_key} bind:value={api_key} password bwignore disabled={saving} />
+      <Input label={message.mod.password} bind:value={password} password disabled={saving} />
+      <Input label={message.mod.date} bind:value={date} disabled={saving} />
+      <Input label={message.mod.link} bind:value={link} disabled={saving} />
+      <Input label={message.mod.content} bind:value={content} rows={20} disabled={saving} />
     </div>
     <div class="font-sans text-sm text-text">
       {status}
@@ -51,7 +57,7 @@
         onclick={() => void on_push_grass_click()}
       >
         <div class="font-sans text-sm font-medium text-text-primary">
-          {saving ? message.mod.saving : message.mod.push_grass}
+          {saving ? message.mod.pushing : message.mod.push_grass}
         </div>
       </button>
     </div>
