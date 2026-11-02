@@ -5,13 +5,12 @@
   import { push_grass } from "#lib/mod.ts";
 
   const default_date = () => {
-    return new Date(Date.now() - 6 * 60 * 60 * 1000).toLocaleDateString("sv-SE", {
+    return new Date(Date.now() - 18 * 60 * 60 * 1000).toLocaleDateString("sv-SE", {
       timeZone: "Asia/Seoul",
     });
   };
 
   let api_key = $state("");
-  let password = $state("");
   let date = $state(default_date());
   let link = $state("");
   let content = $state("");
@@ -24,7 +23,7 @@
     status = "";
     const api_key_ = api_key;
     api_key = "";
-    const result = await push_grass({ api_key: api_key_, password, date, link, content });
+    const result = await push_grass({ api_key: api_key_, date, link, content });
     if (result.isOk()) {
       date = "";
       link = "";
@@ -41,8 +40,7 @@
   <div class="mx-auto w-full max-w-4xl space-y-6 p-6">
     <Lawn />
     <div class="space-y-2">
-      <Input label={message.mod.api_key} bind:value={api_key} password bwignore disabled={saving} />
-      <Input label={message.mod.password} bind:value={password} password disabled={saving} />
+      <Input label={message.mod.api_key} bind:value={api_key} password disabled={saving} />
       <Input label={message.mod.date} bind:value={date} disabled={saving} />
       <Input label={message.mod.link} bind:value={link} disabled={saving} />
       <Input label={message.mod.content} bind:value={content} rows={20} disabled={saving} />

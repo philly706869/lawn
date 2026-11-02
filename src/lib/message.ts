@@ -8,7 +8,6 @@ export const message = {
   },
   mod: {
     api_key: "API Key",
-    password: "Password",
     date: "Date",
     link: "Link",
     content: "Content",
@@ -18,12 +17,9 @@ export const message = {
       `Successfully pushed grass with commit ${ref}. It will appear once deployment is complete.`,
   },
   error: {
+    api_key_missing: "Enter your API key.",
     invalid_date: "Enter a valid date in YYYY-MM-DD format.",
     invalid_link: "The link is invalid.",
-    password_required: "Enter your password.",
-    key_storage_failed: "Failed to encrypt the API key or access browser storage.",
-    api_key_missing: "No saved API key found. Enter your API key.",
-    decryption_failed: "Failed to decrypt the API key. Check your password or saved key.",
     load: {
       fetch: "Failed to load data: network request failed",
       status: (status: string) => `Failed to load data: ${status}`,
