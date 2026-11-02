@@ -3,19 +3,11 @@
     label: string;
     value: string;
     password?: boolean;
-    bwignore?: boolean;
     rows?: number;
     disabled?: boolean;
   }
 
-  let {
-    label,
-    value = $bindable(),
-    password = false,
-    bwignore = false,
-    rows,
-    disabled = false,
-  }: Props = $props();
+  let { label, value = $bindable(), password = false, rows, disabled = false }: Props = $props();
 
   const id = $props.id();
 </script>
@@ -31,7 +23,6 @@
       {id}
       bind:value
       type={password ? "password" : undefined}
-      data-bwignore={bwignore ? true : undefined}
       {disabled}
     />
   {:else}
