@@ -5,7 +5,7 @@
   import { push_grass } from "#lib/mod.ts";
 
   const default_date = () => {
-    return new Date(Date.now() - 12 * 60 * 60 * 1000).toLocaleDateString("sv-SE", {
+    return new Date(Date.now() - 18 * 60 * 60 * 1000).toLocaleDateString("sv-SE", {
       timeZone: "Asia/Seoul",
     });
   };
