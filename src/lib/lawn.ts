@@ -9,6 +9,7 @@ export interface LawnWeek {
 export interface LawnDay {
   date: string;
   level: GrassLevel;
+  size?: number;
   href?: string;
 }
 
@@ -52,11 +53,15 @@ export const create_lawn = (grass: typeof data.grass, now: Date = new Date()): L
     ) {
       const date = new Date(time).toISOString().slice(0, 10);
       const record = records.get(date);
-      days.push({
+      const day: LawnDay = {
         date,
         level: get_grass_level(record?.size),
-        ...(record ? { href: record.link } : {}),
-      });
+      };
+      if (record !== undefined) {
+        day.size = record.size;
+        day.href = record.link;
+      }
+      days.push(day);
     }
 
     const first_day = days[0]!;
