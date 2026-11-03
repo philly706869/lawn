@@ -44,7 +44,9 @@
                 href={day.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={day.date}
+                title={day.date +
+                  (day.level !== 0 ? ` / ${day.level}` : "") +
+                  (day.size !== undefined ? `(${day.size})` : "")}
                 data-level={day.level}
               ></a>
               <!-- eslint-enable svelte/no-navigation-without-resolve -->
