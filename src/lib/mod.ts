@@ -56,11 +56,11 @@ async function load_data(
     encoding: z.literal("base64"),
   });
   const parse = ResultAsync.fromThrowable(async () => {
-    const json = await response.json();
+    const json: unknown = await response.json();
     const file = schema.parse(json);
     const bytes = from_base64(file.content);
     const data_json = decoder.decode(bytes);
-    const data_object = JSON.parse(data_json);
+    const data_object: unknown = JSON.parse(data_json);
     const data = data_schema.parse(data_object);
     return { data, file_sha: file.sha };
   });
@@ -123,7 +123,7 @@ async function save_data({
     }),
   });
   const parse = ResultAsync.fromThrowable(async () => {
-    const json = await response.json();
+    const json: unknown = await response.json();
     const data = schema.parse(json);
     return { commit_sha: data.commit.sha };
   });
