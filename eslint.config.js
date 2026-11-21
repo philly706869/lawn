@@ -6,20 +6,23 @@ import globals from "globals";
 import path from "node:path";
 import ts from "typescript-eslint";
 
-const gitignore_path = path.resolve(import.meta.dirname, ".gitignore");
-
 export default defineConfig(
-  includeIgnoreFile(gitignore_path),
+  includeIgnoreFile(path.resolve(import.meta.dirname, ".gitignore"), {
+    gitignoreResolution: true,
+  }),
   js.configs.recommended,
-  ts.configs.recommended,
+  ts.configs.recommendedTypeChecked,
   svelte.configs.recommended,
   prettier,
   svelte.configs.prettier,
   {
     languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
       globals: {
-        ...globals.browser,
         ...globals.node,
+        ...globals.browser,
       },
     },
     rules: {
