@@ -14,7 +14,7 @@
     "resolveJsonModule": true,
     "types": ["$app/types", "node"],
     "sourceMap": true,
-    "allowJs": false,
+    "allowJs": true,
     "checkJs": false,
     "esModuleInterop": true,
     "isolatedModules": true,

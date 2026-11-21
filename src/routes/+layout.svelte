@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { asset } from "$app/paths";
   import "../app.css";
+
+  import { asset } from "$app/paths";
   import type { LayoutProps } from "./$types";
 
-  let { children }: LayoutProps = $props();
+  const { children }: LayoutProps = $props();
 
   const title = "이론학회 잔디밭";
   const description = "이론학회 일기 잔디밭";
